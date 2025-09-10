@@ -9,9 +9,9 @@ const listingSchema = new Schema({
     description:String,
     image:{
         type:String,
-        default:"https://unsplash.com/s/photos/nature-background",
+        default:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=60",
         set: (v) => v === "" ? 
-        "https://unsplash.com/s/photos/nature-background" 
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=60" 
         : v,
     },
     price: {
@@ -23,6 +23,12 @@ const listingSchema = new Schema({
 
     location:String,
     country:String,
+    reviews: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Review",
+        },
+    ],
 });
 
 const Listing = mongoose.model("Listing",listingSchema);
